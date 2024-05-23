@@ -20,30 +20,30 @@
     <h1>Mapa Bardejova</h1>
     <div id="map"></div>
     <div style="text-align: center;">
-        <button >
+        <button id="cyklisticke">
             <img src="C:/Users/alexo/Desktop/prax/img/bike.png" style="width: 50px; height: 50px;"><br>
             Cyklisticke ciele
         </button>
 
         
 
-        <button>
+        <button id="obcerstvenie">
             <img src="C:/Users/alexo/Desktop/prax/img/jedlo.png" style="width: 50px; height: 50px;"><br>
               Obcerstvenie  
         </button>
-        <button>
+        <button id="opekanie">
             <img src="C:/Users/alexo/Desktop/prax/img/ohen.png" style="width: 50px; height: 50px;"><br>
               Opekanie :)  
         </button>
 
-        <button>
+        <button id="oddych">
             <img src="C:/Users/alexo/Desktop/prax/img/voda.png" style="width: 50px; height: 50px;"><br>
             Oddych
         </button>
  
 
 
-        <button>
+        <button id="prirodny">
             <img src="C:/Users/alexo/Desktop/prax/img/voda.png" style="width: 50px; height: 50px;"><br>
             Prirodny pramen
         </button>
@@ -67,7 +67,7 @@
 <script>
     var map = L.map('map')
     map.setView([49.306196, 21.268673], 13);
-    49.2925, 21.2762
+    
     // var gpxFile = 'F:/Trip_2024-05-21_ebike-connect-1.gpx';
 
     //     var xhr = new XMLHttpRequest();
@@ -88,6 +88,24 @@
     // L.GPX(gpx, {async: true}).on('loaded', function(e) 
     // {map.fitBounds(e.target.getBounds());
     // }).addTo(map);
+
+ 
+
+
+    var trasaIcon = L.icon
+    ({
+    iconUrl: 'C:/Users/alexo/Desktop/prax/img/point.png',
+    shadowUrl: 'C:/Users/alexo/Desktop/prax/img/leaf-shadow.png',
+
+    iconSize:     [28,85], 
+    shadowSize:   [50, 64], 
+    iconAnchor:   [22, 94], 
+    shadowAnchor: [4, 62],  
+    popupAnchor:  [-3, -76] 
+    });
+
+
+
 
 
 
@@ -152,81 +170,188 @@
 
 
 
-    var markerhrad = L.marker([49.35335, 21.298828], {icon: starIcon}).addTo(map);
-    markerhrad.bindPopup("<b>Zborovsky hrad</b><br>Hrad Zborov, zvaný aj Makovica, jedna z najväčších dominánt severovýchodu Slovenska.");
+
+   
+    var toggleButton = document.getElementById('cyklisticke');
+    toggleButton.addEventListener('click', function() 
+    {
+        var markerRodinny = L.marker([49.337969, 21.260758], {icon: greenIcon}).addTo(map);
+        markerRodinny.bindPopup("<b>Rodinny singeltrack</b><br>Vhodny aj pre deti a mladsich.");
+
+        var markerhrad = L.marker([49.35335, 21.298828], {icon: starIcon}).addTo(map);
+        markerhrad.bindPopup("<b>Zborovsky hrad</b><br>Hrad Zborov, zvaný aj Makovica, jedna z najväčších dominánt severovýchodu Slovenska.");
+
+        var markerCeresna = L.marker([49.33497554958399, 21.244990621779672],{icon: starIcon}).addTo(map);
+        markerCeresna.bindPopup("<b>Sedlo Ceresna</b><br>Turisticky atraktívne miesto a turistický chodník Čerešňa. Svoje čaro má počas celého roka, no v zime je lákadlom ešte o čosi viac.");
+
+        var markermihalov = L.marker([49.27896691067201, 21.22869074269778], {icon: greenIcon}).addTo(map);
+        markermihalov.bindPopup("<b>Mihalov</b><br>Miesto na opekanie s krasnym vyhladom.");
+
+        var markermihalov = L.marker([49.278514, 21.249415], {icon: greenIcon}).addTo(map);
+        markermihalov.bindPopup("<b>Mihalov</b><br>.");
+
+        var markerkralovsky = L.marker([49.347423, 21.247803], {icon: greenIcon}).addTo(map);
+        markerkralovsky.bindPopup("<b>Kralovsky Singletrack</b><br>Len pre vazne pokrocilych!!!");
 
 
-    var markerCeresna = L.marker([49.33497554958399, 21.244990621779672],{icon: starIcon}).addTo(map);
-    markerCeresna.bindPopup("<b>Sedlo Ceresna</b><br>Turisticky atraktívne miesto a turistický chodník Čerešňa. Svoje čaro má počas celého roka, no v zime je lákadlom ešte o čosi viac.");
+        var markerkriz = L.marker([49.281356, 21.279611], {icon: greenIcon}).addTo(map);
+        markerkriz.bindPopup("<b>Pri Krizi</b><br>Posvatne miesto.  ");
 
-    var markerodpocivadlo4 = L.marker([49.340203, 21.271082], {icon: blueIcon}).addTo(map);
-    markerodpocivadlo4.bindPopup("<b>Odpocivadlo</b><br>  ");
+        var markervyhliadka2 = L.marker([49.317096, 21.249458], {icon: greenIcon}).addTo(map);
+        markervyhliadka2.bindPopup("<b>Posed</b><br>Posed so strieskou a lavickami.");
 
+        var markerkamenna = L.marker([49.322905, 21.270765], {icon: greenIcon}).addTo(map);
+        markerkamenna.bindPopup("<b>Kamenna Hora</b><br>Ohnisko, posed a singletrack zaroven!");
 
-    var markermagura1 = L.marker([49.359708, 21.245507], {icon: blueIcon}).addTo(map);
-    markermagura1.bindPopup("<b>Magura</b><br>");
+        var markermagura4 = L.marker([49.360096, 21.245751], {icon: starIcon}).addTo(map);
+        markermagura4.bindPopup("<b>Magura</b><br>");
 
-    var markermagura2 = L.marker([49.359708, 21.245507], {icon: redIcon}).addTo(map);
-    markermagura2.bindPopup("<b>Magura</b><br>");
-
-    var markermagura3 = L.marker([49.359708, 21.245507], {icon: orangeIcon}).addTo(map);
-    markermagura3.bindPopup("<b>Magura</b><br>");
-
-    var markermagura4 = L.marker([49.360096, 21.245751], {icon: starIcon}).addTo(map);
-    markermagura4.bindPopup("<b>Magura</b><br>");
-
-
-
-    var markermihalov = L.marker([49.27896691067201, 21.22869074269778], {icon: greenIcon}).addTo(map);
-    markermihalov.bindPopup("<b>Mihalov</b><br>Miesto na opekanie s krasnym vyhladom.");
-
-    var markermihalov = L.marker([49.27896691067201, 21.22869074269778], {icon: starIcon}).addTo(map);
-    markermihalov.bindPopup("<b>Mihalov</b><br>Miesto na opekanie s krasnym vyhladom.");
-
-
-    var markermihalov = L.marker([49.278514, 21.249415], {icon: greenIcon}).addTo(map);
-    markermihalov.bindPopup("<b>Mihalov</b><br>.");
-
-    var markerohnisko1 = L.marker([49.336499, 21.258451], {icon: redIcon}).addTo(map);
-    markerohnisko1.bindPopup("<b>Ohnisko</b><br>  ");
-
-    var markerRodinny = L.marker([49.337969, 21.260758], {icon: greenIcon}).addTo(map);
-    markerRodinny.bindPopup("<b>Rodinny singeltrack</b><br>Vhodny aj pre deti a mladsich.");
-
-    var markerohnisko2 = L.marker([49.332018, 21.260567], {icon: redIcon}).addTo(map);
-    markerohnisko2.bindPopup("<b>Ohnisko</b><br>  ");
-
-    var markerkralovsky = L.marker([49.347423, 21.247803], {icon: greenIcon}).addTo(map);
-    markerkralovsky.bindPopup("<b>Kralovsky Singletrack</b><br>Len pre vazne pokrocilych!!!");
-
-    var markerkriz = L.marker([49.281356, 21.279611], {icon: greenIcon}).addTo(map);
-    markerkriz.bindPopup("<b>Pri Krizi</b><br>Posvatne miesto.  ");
-
-    var markervyhliadka2 = L.marker([49.317096, 21.249458], {icon: greenIcon}).addTo(map);
-    markervyhliadka2.bindPopup("<b>Posed</b><br>Posed so strieskou a lavickami.");
-
-
-    var markerkamenna = L.marker([49.322905, 21.270765], {icon: redIcon}).addTo(map);
-    markerkamenna.bindPopup("<b>Kamenna Hora</b><br>Ohnisko, posed a singletrack zaroven!");
-
-    var markerkamenna = L.marker([49.322905, 21.270765], {icon: greenIcon}).addTo(map);
-    markerkamenna.bindPopup("<b>Kamenna Hora</b><br>Ohnisko, posed a singletrack zaroven!");
-
-    var markerkamenna = L.marker([49.322905, 21.270765], {icon: orangeIcon}).addTo(map);
-    markerkamenna.bindPopup("<b>Kamenna Hora</b><br>Ohnisko, posed a singletrack zaroven!");
-
-
-    var markerodpocivadlo2 = L.marker([49.351772, 21.25295], {icon: blueIcon}).addTo(map);
-    markerodpocivadlo2.bindPopup("<b>Odpocivadlo</b><br>  ");
-
-    var markerodpocivadlo3= L.marker([49.336178, 21.270234], {icon: blueIcon}).addTo(map);
-    markerodpocivadlo3.bindPopup("<b>Odpocivadlo</b><br>  ");
-
-    var markerodpocivadlo4= L.marker([49.332561, 21.270703], {icon: blueIcon}).addTo(map);
-    markerodpocivadlo4.bindPopup("<b>Odpocivadlo</b><br>  ");
+        var markermihalov = L.marker([49.27896691067201, 21.22869074269778], {icon: starIcon}).addTo(map);
+        markermihalov.bindPopup("<b>Mihalov</b><br>Miesto na opekanie s krasnym vyhladom.");
 
 
 
+    });
+
+
+
+
+    var toggleButton = document.getElementById('obcerstvenie');
+    toggleButton.addEventListener('click', function() 
+    {
+
+        var markermagura3 = L.marker([49.359708, 21.245507], {icon: orangeIcon}).addTo(map);
+        markermagura3.bindPopup("<b>Magura</b><br>");
+
+        var markerkamenna = L.marker([49.322905, 21.270765], {icon: orangeIcon}).addTo(map);
+        markerkamenna.bindPopup("<b>Kamenna Hora</b><br>Ohnisko, posed a singletrack zaroven!");
+
+
+
+    });
+
+
+
+
+
+    var toggleButton = document.getElementById('opekanie');
+    toggleButton.addEventListener('click', function() 
+    {
+
+        var markermagura2 = L.marker([49.359708, 21.245507], {icon: redIcon}).addTo(map);
+        markermagura2.bindPopup("<b>Magura</b><br>");
+
+        var markerohnisko1 = L.marker([49.336499, 21.258451], {icon: redIcon}).addTo(map);
+        markerohnisko1.bindPopup("<b>Ohnisko</b><br>  ");
+
+        var markerohnisko2 = L.marker([49.332018, 21.260567], {icon: redIcon}).addTo(map);
+        markerohnisko2.bindPopup("<b>Ohnisko</b><br>  ");
+
+        var markerkamenna = L.marker([49.322905, 21.270765], {icon: redIcon}).addTo(map);
+        markerkamenna.bindPopup("<b>Kamenna Hora</b><br>Ohnisko, posed a singletrack zaroven!");
+
+
+
+
+    });
+
+
+
+
+
+    var toggleButton = document.getElementById('oddych');
+    toggleButton.addEventListener('click', function() 
+    {
+        var markerodpocivadlo4 = L.marker([49.340203, 21.271082], {icon: blueIcon}).addTo(map);
+        markerodpocivadlo4.bindPopup("<b>Odpocivadlo</b><br>  ");
+
+
+        var markermagura1 = L.marker([49.359708, 21.245507], {icon: blueIcon}).addTo(map);
+        markermagura1.bindPopup("<b>Magura</b><br>");
+
+
+        var markerodpocivadlo2 = L.marker([49.351772, 21.25295], {icon: blueIcon}).addTo(map);
+        markerodpocivadlo2.bindPopup("<b>Odpocivadlo</b><br>  ");
+
+        var markerodpocivadlo3= L.marker([49.336178, 21.270234], {icon: blueIcon}).addTo(map);
+        markerodpocivadlo3.bindPopup("<b>Odpocivadlo</b><br>  ");
+
+        var markerodpocivadlo4= L.marker([49.332561, 21.270703], {icon: blueIcon}).addTo(map);
+        markerodpocivadlo4.bindPopup("<b>Odpocivadlo</b><br>  ");
+
+
+
+    });
+
+
+
+
+
+    var toggleButton = document.getElementById('prirodny');
+    toggleButton.addEventListener('click', function() 
+    {
+
+        var markerPramienok1 = L.marker([49.336041, 21.24791]).addTo(map);
+        markerPramienok1.bindPopup("<b>Pramen</b><br>Miesto na ktorom vyviera pramen.");
+
+        var markerPramienok1 = L.marker([49.346429, 21.246641]).addTo(map);
+        markerPramienok1.bindPopup("<b>Pramen</b><br>Miesto na ktorom vyviera pramen.");
+
+        var markerPramienok1 = L.marker([49.349659, 21.250627]).addTo(map);
+        markerPramienok1.bindPopup("<b>Pramen</b><br>Miesto na ktorom vyviera pramen.");
+
+        var markerPramienok1 = L.marker([49.351734, 21.252832]).addTo(map);
+        markerPramienok1.bindPopup("<b>Pramen</b><br>Miesto na ktorom vyviera pramen.");
+
+        var markerPramienok1 = L.marker([49.344666, 21.266119]).addTo(map);
+        markerPramienok1.bindPopup("<b>Pramen</b><br>Miesto na ktorom vyviera pramen.");
+
+        var markerPramienok1 = L.marker([49.343956, 21.270454]).addTo(map);
+        markerPramienok1.bindPopup("<b>Pramen</b><br>Miesto na ktorom vyviera pramen.");
+
+        var markerPramienok1 = L.marker([49.323624, 21.273715]).addTo(map);
+        markerPramienok1.bindPopup("<b>Pramen</b><br>Miesto na ktorom vyviera pramen.");
+
+        var markerPramienok1 = L.marker([49.338801, 21.271205]).addTo(map);
+        markerPramienok1.bindPopup("<b>Pramen</b><br>Miesto na ktorom vyviera pramen.");
+
+        var markerPramienok1 = L.marker([49.337916, 21.267503]).addTo(map);
+        markerPramienok1.bindPopup("<b>Pramen</b><br>Miesto na ktorom vyviera pramen.");
+
+        var markerPramienok1 = L.marker([49.33184, 21.263203]).addTo(map);
+        markerPramienok1.bindPopup("<b>Pramen</b><br>Miesto na ktorom vyviera pramen.");
+
+        var markerPramienok1 = L.marker([49.330239, 21.269252]).addTo(map);
+        markerPramienok1.bindPopup("<b>Pramen Aneta</b><br>Miesto na ktorom vyviera pramen.");
+
+        var markerPramienok1 = L.marker([49.328669, 21.271342]).addTo(map);
+        markerPramienok1.bindPopup("<b>LekarskyPramen</b><br>Miesto na ktorom vyviera pramen.");
+
+        var markerPramienok1 = L.marker([49.328672, 21.271336]).addTo(map);
+        markerPramienok1.bindPopup("<b>Pramen Anna</b><br>Miesto na ktorom vyviera pramen.");
+    
+
+
+
+
+
+
+    });
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    
 
 
 
@@ -236,6 +361,18 @@
 
     var marker = L.marker([0.00000,0.00000], {icon: redIcon}).addTo(map);
     marker.bindPopup("<b></b><br>  ");
+
+
+
+
+
+
+   
+
+
+
+
+
 
 
 
@@ -267,45 +404,7 @@
     
     
 
-    var markerPramienok1 = L.marker([49.336041, 21.24791]).addTo(map);
-    markerPramienok1.bindPopup("<b>Pramen</b><br>Miesto na ktorom vyviera pramen.");
-
-    var markerPramienok1 = L.marker([49.346429, 21.246641]).addTo(map);
-    markerPramienok1.bindPopup("<b>Pramen</b><br>Miesto na ktorom vyviera pramen.");
-
-    var markerPramienok1 = L.marker([49.349659, 21.250627]).addTo(map);
-    markerPramienok1.bindPopup("<b>Pramen</b><br>Miesto na ktorom vyviera pramen.");
-
-    var markerPramienok1 = L.marker([49.351734, 21.252832]).addTo(map);
-    markerPramienok1.bindPopup("<b>Pramen</b><br>Miesto na ktorom vyviera pramen.");
-
-    var markerPramienok1 = L.marker([49.344666, 21.266119]).addTo(map);
-    markerPramienok1.bindPopup("<b>Pramen</b><br>Miesto na ktorom vyviera pramen.");
-
-    var markerPramienok1 = L.marker([49.343956, 21.270454]).addTo(map);
-    markerPramienok1.bindPopup("<b>Pramen</b><br>Miesto na ktorom vyviera pramen.");
-
-    var markerPramienok1 = L.marker([49.323624, 21.273715]).addTo(map);
-    markerPramienok1.bindPopup("<b>Pramen</b><br>Miesto na ktorom vyviera pramen.");
-
-    var markerPramienok1 = L.marker([49.338801, 21.271205]).addTo(map);
-    markerPramienok1.bindPopup("<b>Pramen</b><br>Miesto na ktorom vyviera pramen.");
-
-    var markerPramienok1 = L.marker([49.337916, 21.267503]).addTo(map);
-    markerPramienok1.bindPopup("<b>Pramen</b><br>Miesto na ktorom vyviera pramen.");
-
-    var markerPramienok1 = L.marker([49.33184, 21.263203]).addTo(map);
-    markerPramienok1.bindPopup("<b>Pramen</b><br>Miesto na ktorom vyviera pramen.");
-
-    var markerPramienok1 = L.marker([49.330239, 21.269252]).addTo(map);
-    markerPramienok1.bindPopup("<b>Pramen Aneta</b><br>Miesto na ktorom vyviera pramen.");
-
-    var markerPramienok1 = L.marker([49.328669, 21.271342]).addTo(map);
-    markerPramienok1.bindPopup("<b>LekarskyPramen</b><br>Miesto na ktorom vyviera pramen.");
-
-    var markerPramienok1 = L.marker([49.328672, 21.271336]).addTo(map);
-    markerPramienok1.bindPopup("<b>Pramen Anna</b><br>Miesto na ktorom vyviera pramen.");
-    
+   
 
 
 
@@ -313,7 +412,37 @@
 
 
 
+    function loadCoordinates(file) {
+    fetch(file)
+        .then(response => response.text())
+        .then(data => {
+            const lines = data.split('\n');
+            var cycling = [];
+            for (let i = 0; i < lines.length; i += 2) {
+                const [lat, lon] = lines[i].split(',').map(Number);
+                if (!isNaN(lat) && !isNaN(lon)) {
+                    cycling.push([lat, lon]);
+                }
+            }
+            addMarkers(cycling);
+        })
+       
+}
 
+// function addMarkers(cycling) {
+//     for (let i = 0; i < cycling.length; i++) {
+//         console.log("Coord: ", cycling[i]);
+//         var l = L.marker(cycling[i]).addTo(map);
+//     }
+
+//     if (cycling.length > 0) {
+//         const bounds = L.latLngBounds(cycling);
+//         map.fitBounds(bounds);
+//     }
+// }
+
+
+// loadCoordinates('F:/suradnice.txt');
 
 
 
@@ -371,6 +500,7 @@ map.on('click', onMapClick);
     // .openOn(map);
 
 
+
     
     
 
@@ -384,8 +514,11 @@ map.on('click', onMapClick);
 
 
 
-<!-- green = singletracky
+<!-- 
+green = singletracky
 red = Ohnisko
-orange = voda 
-star = cyklisticke miesta
+orange =  
+blue = oddych
+star = cyklisticke ciele
+marker = voda
 -->
